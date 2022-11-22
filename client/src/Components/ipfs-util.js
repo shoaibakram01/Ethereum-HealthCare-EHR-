@@ -1,3 +1,49 @@
+// const ipfsClient = require('ipfs-http-client');
+const projectId = '2HEePHqr0yoyNTidzIls3jZiSrA';
+const projectSecret = '06bc27e967d2c8f91e4a5cfcaff7560f';
+const auth =
+    'Basic ' + Buffer.from(projectId + ':' + projectSecret).toString('base64');
+
+// const client = ipfsClient.create({
+//     host: 'ipfs.infura.io',
+//     port: 5001,
+//     protocol: 'https',
+//     headers: {
+//         authorization: auth,
+//     },
+// });
+
+// export default client;
+
+// import {create} from "ipfs-http-client"; 
+// const ipfsClient = require("ipfs-http-client");
+// const projectId = "2HEePHqr0yoyNTidzIls3jZiSrA";
+// const projectSecret = "06bc27e967d2c8f91e4a5cfcaff7560f";
+// const authorization = "Basic " + btoa(projectId + ":" + projectSecret);
+// // const auth =
+// //     "Basic " + Buffer.from(projectId + ":" + projectSecret).toString("base64");
+//     let ipfs
+//     try {
+//       ipfs = create({
+//         url: "https://ipfs.infura.io:5001/api/v0",
+//         headers: {
+//           authorization,
+//         },
+//       });
+//     } catch (error) {
+//       console.error("IPFS error ", error);
+//       ipfs = undefined;
+//     } 
+// // const client = ipfsClient.create({
+// //     host: "ipfs.infura.io",
+// //     port: 5001,
+// //     protocol: "https",
+// //     headers: {
+// //         authorization: auth,
+// //     },
+// // });
+
+// export default ipfs;
 // import bs58 from 'bs58'
 // import axios from 'axios';
 
@@ -30,5 +76,13 @@
 // }
 
 const IPFS = require('ipfs-api');
-const ipfs = new IPFS({host:'ipfs.infura.io',port:5001,protocol:'https'});
+const ipfs = IPFS({
+    host: 'ipfs.infura.io',
+    port: 5001,
+    protocol: 'https',
+    headers: {
+        authorization : auth,      
+    }
+  })
+// const ipfs = new IPFS({host:'ipfs.infura.io',port:5001,protocol:'https'});
 export default ipfs;

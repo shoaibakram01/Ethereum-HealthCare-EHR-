@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { getPatientInfoForDoctor } from './eth-util';
 import { getFileInfo } from "./eth-util";
-import {  Icon, Card,Collapse } from 'antd';
+import {   Card,Collapse } from 'antd';
 
 //import { connect } from "react-redux";
 import PopUp from "./common/popup";
@@ -99,7 +99,7 @@ class DisplayPatient extends Component {
                 </Card>
                 <div style={{height: "500px", overflowY: "scroll"}}>
                 <Collapse className='folderTab' defaultActiveKey={['1']}>
-                        <Panel   header={<Icon type="folder" />} key="1">
+                        <Panel   header={<i class="fa-sharp fa-solid fa-folder"></i>} key="1">
                             { 
                                 files.map((fhash, i) => {
                                     let filename = this.state.files[i]?this.state.files[i][0]:null;

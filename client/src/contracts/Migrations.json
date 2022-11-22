@@ -59,7 +59,7 @@
   "sourceMap": "36:326:0:-;;;196:52;8:9:-1;5:2;;;30:1;27;20:12;5:2;196:52:0;232:10;224:5;;:18;;;;;;;;;;;;;;;;;;36:326;;;;;;",
   "deployedSourceMap": "36:326:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;36:326:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;86:36;;;:::i;:::-;;;;;;;;;;;;;;;;;;;61:20;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;254:105;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;254:105:0;;;;;;;;;;;;;;;;;:::i;:::-;;86:36;;;;:::o;61:20::-;;;;;;;;;;;;;:::o;254:105::-;176:5;;;;;;;;;;;162:19;;:10;:19;;;158:26;;;344:9;317:24;:36;;;;158:26;254:105;:::o",
   "source": "pragma solidity >=0.4.21 <0.7.0;\r\n\r\ncontract Migrations {\r\n  address public owner;\r\n  uint public last_completed_migration;\r\n\r\n  modifier restricted() {\r\n    if (msg.sender == owner) _;\r\n  }\r\n\r\n  constructor() public {\r\n    owner = msg.sender;\r\n  }\r\n\r\n  function setCompleted(uint completed) public restricted {\r\n    last_completed_migration = completed;\r\n  }\r\n}\r\n",
-  "sourcePath": "C:\\Users\\shoaib\\Downloads\\Compressed\\Ethereum-EHR_Updated2\\Ethereum-EHR\\Ethereum-EHR\\contracts\\Migrations.sol",
+  "sourcePath": "D:\\Ethereum-HealthCare-EHR-\\contracts\\Migrations.sol",
   "ast": {
     "absolutePath": "project:/contracts/Migrations.sol",
     "exportedSymbols": {
@@ -176,7 +176,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2146,
+                        "referencedDeclaration": 1882,
                         "src": "162:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -280,7 +280,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2146,
+                        "referencedDeclaration": 1882,
                         "src": "232:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -626,7 +626,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2146,
+                                  "referencedDeclaration": 1882,
                                   "type": "msg",
                                   "value": "msg"
                                 },
@@ -763,7 +763,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2146,
+                                  "referencedDeclaration": 1882,
                                   "type": "msg",
                                   "value": "msg"
                                 },
@@ -960,10 +960,17 @@
       "links": {},
       "address": "0xA1cdC856146402004672017A64EE2F1a5a701477",
       "transactionHash": "0xd8baccd0bda5ea9d54af13fd629d00096722e054433b1094aa409435b9ecd81c"
+    },
+    "5": {
+      "events": {},
+      "links": {},
+      "address": "0xEf405e402e6873c3483c38840Dc1DA93AF750806",
+      "transactionHash": "0xc69c8cd9e9dadd0590d7919ea601991c69055fd73e59ad31cd733cf9cb5feaaf"
     }
   },
-  "schemaVersion": "3.4.4",
-  "updatedAt": "2022-07-21T08:42:54.525Z",
+  "schemaVersion": "3.4.10",
+  "updatedAt": "2022-11-06T07:36:52.526Z",
+  "networkType": "ethereum",
   "devdoc": {
     "methods": {}
   },

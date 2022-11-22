@@ -85,7 +85,7 @@
   "sourceMap": "231:1523:1:-;;;569:52;8:9:-1;5:2;;;30:1;27;20:12;5:2;569:52:1;605:10;597:5;;:18;;;;;;;;;;;;;;;;;;231:1523;;;;;;",
   "deployedSourceMap": "231:1523:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;231:1523:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1048:114;;;:::i;:::-;;253:20;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;1330:105;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1330:105:1;;;;;;;;;;;;;;;;;;;:::i;:::-;;1048:114;756:5;;;;;;;;;;;742:19;;:10;:19;;;734:28;;;;;;1125:5;;;;;;;;;;;1106:25;;;;;;;;;;;;1154:1;1138:5;;:18;;;;;;;;;;;;;;;;;;1048:114::o;253:20::-;;;;;;;;;;;;;:::o;1330:105::-;756:5;;;;;;;;;;;742:19;;:10;:19;;;734:28;;;;;;1400:29;1419:9;1400:18;:29::i;:::-;1330:105;:::o;1576:175::-;1668:1;1647:23;;:9;:23;;;;1639:32;;;;;;1711:9;1683:38;;1704:5;;;;;;;;;;;1683:38;;;;;;;;;;;;1736:9;1728:5;;:17;;;;;;;;;;;;;;;;;;1576:175;:::o",
   "source": "pragma solidity >=0.4.21 <0.7.0;\r\n\r\n/**\r\n * @title Ownable\r\n * @dev The Ownable contract has an owner address, and provides basic authorization control\r\n * functions, this simplifies the implementation of \"user permissions\".\r\n */\r\ncontract Ownable {\r\n  address public owner;\r\n\r\n\r\n  event OwnershipRenounced(address indexed previousOwner);\r\n  event OwnershipTransferred(\r\n    address indexed previousOwner,\r\n    address indexed newOwner\r\n  );\r\n\r\n\r\n  /**\r\n   * @dev The Ownable constructor sets the original `owner` of the contract to the sender\r\n   * account.\r\n   */\r\n  constructor() public {\r\n    owner = msg.sender;\r\n  }\r\n\r\n  /**\r\n   * @dev Throws if called by any account other than the owner.\r\n   */\r\n  modifier onlyOwner() {\r\n    require(msg.sender == owner);\r\n    _;\r\n  }\r\n\r\n  /**\r\n   * @dev Allows the current owner to relinquish control of the contract.\r\n   * @notice Renouncing to ownership will leave the contract without an owner.\r\n   * It will not be possible to call the functions with the `onlyOwner`\r\n   * modifier anymore.\r\n   */\r\n  function renounceOwnership() public onlyOwner {\r\n    emit OwnershipRenounced(owner);\r\n    owner = address(0);\r\n  }\r\n\r\n  /**\r\n   * @dev Allows the current owner to transfer control of the contract to a newOwner.\r\n   * @param _newOwner The address to transfer ownership to.\r\n   */\r\n  function transferOwnership(address _newOwner) public onlyOwner {\r\n    _transferOwnership(_newOwner);\r\n  }\r\n\r\n  /**\r\n   * @dev Transfers control of the contract to a newOwner.\r\n   * @param _newOwner The address to transfer ownership to.\r\n   */\r\n  function _transferOwnership(address _newOwner) internal {\r\n    require(_newOwner != address(0));\r\n    emit OwnershipTransferred(owner, _newOwner);\r\n    owner = _newOwner;\r\n  }\r\n}",
-  "sourcePath": "C:\\Users\\shoaib\\Downloads\\Compressed\\Ethereum-EHR_Updated2\\Ethereum-EHR\\Ethereum-EHR\\contracts\\Ownable.sol",
+  "sourcePath": "D:\\Ethereum-HealthCare-EHR-\\contracts\\Ownable.sol",
   "ast": {
     "absolutePath": "project:/contracts/Ownable.sol",
     "exportedSymbols": {
@@ -301,7 +301,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2146,
+                        "referencedDeclaration": 1882,
                         "src": "605:3:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -388,7 +388,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 2146,
+                            "referencedDeclaration": 1882,
                             "src": "742:3:1",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -442,10 +442,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        2149,
-                        2150
+                        1885,
+                        1886
                       ],
-                      "referencedDeclaration": 2149,
+                      "referencedDeclaration": 1885,
                       "src": "734:7:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -931,10 +931,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        2149,
-                        2150
+                        1885,
+                        1886
                       ],
-                      "referencedDeclaration": 2149,
+                      "referencedDeclaration": 1885,
                       "src": "1639:7:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -1416,7 +1416,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2146,
+                                  "referencedDeclaration": 1882,
                                   "type": "msg",
                                   "value": "msg"
                                 },
@@ -1495,10 +1495,10 @@
                                 }
                               ],
                               "overloadedDeclarations": [
-                                2149,
-                                2150
+                                1885,
+                                1886
                               ],
-                              "referencedDeclaration": 2149,
+                              "referencedDeclaration": 1885,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -1539,7 +1539,7 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2146,
+                                      "referencedDeclaration": 1882,
                                       "type": "msg",
                                       "value": "msg"
                                     },
@@ -2063,10 +2063,10 @@
                                 }
                               ],
                               "overloadedDeclarations": [
-                                2149,
-                                2150
+                                1885,
+                                1886
                               ],
-                              "referencedDeclaration": 2149,
+                              "referencedDeclaration": 1885,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -2328,8 +2328,8 @@
     "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.4.4",
-  "updatedAt": "2022-07-21T08:42:54.533Z",
+  "schemaVersion": "3.4.10",
+  "updatedAt": "2022-11-06T07:33:32.352Z",
   "devdoc": {
     "details": "The Ownable contract has an owner address, and provides basic authorization control functions, this simplifies the implementation of \"user permissions\".",
     "methods": {

@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import { Button } from "react-bootstrap";
 import "./css/signup.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link, useNavigate } from "react-router-dom";
 import DoctorLogin from "./doctorLogin";
 import PatientLogin from "./patientLogin";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 function SignUp() {
-  let history = useHistory();
+  let navigate = useNavigate();
   const hanldeHistory=(event)=>{
     event.preventDefault();
-    history.push("/doctor");
+    navigate("/doctor");
   }
   return (
     <div className="container">

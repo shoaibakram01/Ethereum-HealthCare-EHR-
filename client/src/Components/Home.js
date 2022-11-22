@@ -1,14 +1,9 @@
 import React from "react";
-import { useEffect } from "react";
-function Home (props){
-    useEffect(() => {
-        console.log("props",props);
-        props.setRoute();
-     }
-     , []);
-    return(
+function Home() {
+
+    return (
         <div>
-        <h1>Home</h1>
+            <h1>Home</h1>
         </div>
     )
 }

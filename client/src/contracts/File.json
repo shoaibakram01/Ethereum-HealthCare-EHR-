@@ -7,7 +7,7 @@
   "sourceMap": "38:564:4:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;38:564:4;;;;;;;",
   "deployedSourceMap": "38:564:4:-;;;;;",
   "source": "pragma solidity >=0.4.21 <0.7.0;\r\n\r\n\r\ncontract File {\r\n    mapping (bytes32 => filesInfo) internal hashToFile;\r\n    \r\n    struct filesInfo {\r\n        string file_name;\r\n        string file_type;\r\n        string file_secret;\r\n    }\r\n\r\n    modifier checkFile(bytes32 fileHashId) {\r\n        bytes memory tempString = bytes(hashToFile[fileHashId].file_name);\r\n        require(tempString.length > 0);//check if file exist\r\n        _;\r\n    }\r\n    \r\n    function getFileInfo(bytes32 fileHashId) internal view checkFile(fileHashId) returns(filesInfo memory ) {\r\n        return hashToFile[fileHashId];\r\n    }\r\n}",
-  "sourcePath": "C:\\Users\\shoaib\\Downloads\\Compressed\\Ethereum-EHR_Updated2\\Ethereum-EHR\\Ethereum-EHR\\contracts\\file.sol",
+  "sourcePath": "D:\\Ethereum-HealthCare-EHR-\\contracts\\file.sol",
   "ast": {
     "absolutePath": "project:/contracts/file.sol",
     "exportedSymbols": {
@@ -399,10 +399,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        2149,
-                        2150
+                        1885,
+                        1886
                       ],
-                      "referencedDeclaration": 2149,
+                      "referencedDeclaration": 1885,
                       "src": "364:7:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -1037,10 +1037,10 @@
                                 }
                               ],
                               "overloadedDeclarations": [
-                                2149,
-                                2150
+                                1885,
+                                1886
                               ],
-                              "referencedDeclaration": 2149,
+                              "referencedDeclaration": 1885,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -1337,8 +1337,8 @@
     "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.4.4",
-  "updatedAt": "2022-07-21T08:42:54.554Z",
+  "schemaVersion": "3.4.10",
+  "updatedAt": "2022-11-06T07:33:32.385Z",
   "devdoc": {
     "methods": {}
   },

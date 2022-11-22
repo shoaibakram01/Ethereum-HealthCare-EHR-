@@ -14,12 +14,17 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
 import "./Components/css/antd.css"
 import 'antd/dist/antd.css';
+import {
+  BrowserRouter,
+} from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
       {/* <SignUp/> */}
+      {/* <BrowserRouter> */}
       <NavbarComp />
+      {/* </BrowserRouter> */}
       
     </div>
   );

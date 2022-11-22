@@ -1,24 +1,30 @@
 import React from 'react';
-import { useState } from 'react';
-import { useHistory } from "react-router-dom";
+import { useState ,useContext } from 'react';
+import contractContext from "./context/contractContext";
 function DocLoginForm(props) {
-  const [doctorName, setDoctorName] = useState('');
-  const [fatherName, setFatherName] = useState('');
-  const [age, setAge] = useState('');
-  const [address, setAddress] = useState('');
-  const [cnic, setCnic] = useState('');
-  const [gender,setGender] = useState('');
-  const [qulalification,setQualification]=useState('');
+  let [doctorName, setDoctorName] = useState('');
+  let [fatherName, setFatherName] = useState('');
+  let [age, setAge] = useState('');
+  let [address, setAddress] = useState('');
+  let [cnic, setCnic] = useState('');
+  let [gender,setGender] = useState('');
+  let [qulalification,setQualification]=useState('');
+  let Contcontext = useContext(contractContext)
   const SignUpDoctor=async (event)=>{
     event.preventDefault();
-    if(doctorName=='' || fatherName=='' || age=='' || address=='' || address=='' || cnic=='' || gender=='' || qulalification==''){
+    if(doctorName=='' || fatherName=='' || age=='' || address==''  || cnic=='' || gender=='' || qulalification==''){
       alert('Please fill form carefully, All fields are required')
     }
     else {
-      await props.properties.Contract["OPT"].methods
-        .signupDoctor(doctorName,fatherName,age,address,cnic,gender,qulalification)
-        .send({ from: props.properties.Account01[0] });
-        alert("doctor registered")
+      try {
+        await Contcontext.contract["OPT"].methods
+          .signupDoctor(doctorName,fatherName,age,address,cnic,gender,qulalification)
+          .send({ from: Contcontext.account[0] });
+          alert("doctor registered")
+      }
+      catch(e) {
+        alert(`error : ${e}`)
+      }
     }
   }
 
@@ -38,8 +44,8 @@ function DocLoginForm(props) {
                   type="text"
                   name="name"
                   className="form-control"
-                  onChange={(event)=>setDoctorName(event.target.value)}
-                  required
+                  onChange={(e)=>setDoctorName(e.target.value)}
+                  // required
                   pattern="[a-z]{1,15}"
                   title="name should only contain lowercase letters. e.g. john"
                 />
@@ -54,8 +60,8 @@ function DocLoginForm(props) {
                   Father Name{" "}
                 </label>
                 <input 
-                onChange={(event)=>setFatherName(event.target.value)}
-                required
+                onChange={(e)=>setFatherName(e.target.value)}
+                // required
                 type="text"
                 name="fname"
                 className="form-control"
@@ -77,8 +83,8 @@ function DocLoginForm(props) {
                   name="age"
                   className="form-control"
                   min="0"
-                  onChange={(event)=>setAge(event.target.value)}
-                  required
+                  onChange={(e)=>setAge(e.target.value)}
+                  // required
                 />
               </div>
             </div>
@@ -91,8 +97,8 @@ function DocLoginForm(props) {
                   Address{" "}
                 </label>
                 <input 
-                onChange={(event)=>setAddress(event.target.value)}
-                required
+                onChange={(e)=>setAddress(e.target.value)}
+                // required
                 type="text"
                 name="address"
                 className="form-control"
@@ -108,12 +114,12 @@ function DocLoginForm(props) {
                   CNIC #{" "}
                 </label>
                 <input 
-                onChange={(event)=>setCnic(event.target.value)}
-                required
+                onChange={(e)=>setCnic(e.target.value)}
+                // required
                 type="text"
                 name="cnic"
                 className="form-control"
-                pattern='[0-9]{5}-[0-9]{7}-[0-9]{1}'
+                // pattern='[0-9]{5}-[0-9]{7}-[0-9]{1}'
                 title=" CNIC should only contain digits"
                 
                 />
@@ -129,7 +135,7 @@ function DocLoginForm(props) {
                   {" "}
                   Gender{" "}
                 </label>
-                <select onChange={(event)=>setGender(event.target.value)} required className="custom-select">
+                <select onChange={(e)=>setGender(e.target.value)} required className="custom-select">
                   <option defaultValue="Choose...">Choose...</option>
                   <option value="male">Male</option>
                   <option value="female">Female</option>
@@ -148,8 +154,8 @@ function DocLoginForm(props) {
                   type="text"
                   name="qulalification"
                   className="form-control"
-                  onChange={(event)=>setQualification(event.target.value)}
-                  required
+                  onChange={(e)=>setQualification(e.target.value)}
+                  // required
                 />
               </div>
             </div>
