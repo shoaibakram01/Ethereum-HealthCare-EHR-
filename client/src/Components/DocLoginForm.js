@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState ,useContext } from 'react';
+import { useState, useContext } from 'react';
 import contractContext from "./context/contractContext";
 function DocLoginForm(props) {
   let [doctorName, setDoctorName] = useState('');
@@ -7,22 +7,26 @@ function DocLoginForm(props) {
   let [age, setAge] = useState('');
   let [address, setAddress] = useState('');
   let [cnic, setCnic] = useState('');
-  let [gender,setGender] = useState('');
-  let [qulalification,setQualification]=useState('');
+  let [gender, setGender] = useState('');
+  let [qulalification, setQualification] = useState('');
+  let [error, setError] = useState([])
   let Contcontext = useContext(contractContext)
-  const SignUpDoctor=async (event)=>{
+  const SignUpDoctor = async (event) => {
     event.preventDefault();
-    if(doctorName=='' || fatherName=='' || age=='' || address==''  || cnic=='' || gender=='' || qulalification==''){
-      alert('Please fill form carefully, All fields are required')
+    if (doctorName == '' || fatherName == '' || age == '' || address == '' || cnic == '' || gender == '' || qulalification == '') {
+      // alert('Please fill form carefully, All fields are required')
+      let err = [];
+      err.push("All fields are required");
+      setError(err);
     }
     else {
       try {
         await Contcontext.contract["OPT"].methods
-          .signupDoctor(doctorName,fatherName,age,address,cnic,gender,qulalification)
+          .signupDoctor(doctorName, fatherName, age, address, cnic, gender, qulalification)
           .send({ from: Contcontext.account[0] });
-          alert("doctor registered")
+        alert("doctor registered")
       }
-      catch(e) {
+      catch (e) {
         alert(`error : ${e}`)
       }
     }
@@ -31,8 +35,8 @@ function DocLoginForm(props) {
 
   return (
     <div>
-    <div className="container">
-      <form onSubmit={SignUpDoctor} >
+      <div className="container">
+        <form onSubmit={SignUpDoctor} >
           <div className="row justify-content-center">
             <div className="col-6">
               <div className="form-group">
@@ -44,10 +48,8 @@ function DocLoginForm(props) {
                   type="text"
                   name="name"
                   className="form-control"
-                  onChange={(e)=>setDoctorName(e.target.value)}
-                  // required
-                  pattern="[a-z]{1,15}"
-                  title="name should only contain lowercase letters. e.g. john"
+                  onChange={(e) => setDoctorName(e.target.value)}
+                  required
                 />
               </div>
             </div>
@@ -59,14 +61,12 @@ function DocLoginForm(props) {
                   {" "}
                   Father Name{" "}
                 </label>
-                <input 
-                onChange={(e)=>setFatherName(e.target.value)}
-                // required
-                type="text"
-                name="fname"
-                className="form-control"
-                pattern="[a-z]{1,15}"
-                title=" father name should only contain lowercase letters. e.g. john"
+                <input
+                  onChange={(e) => setFatherName(e.target.value)}
+                  required
+                  type="text"
+                  name="fname"
+                  className="form-control"
                 />
               </div>
             </div>
@@ -83,8 +83,8 @@ function DocLoginForm(props) {
                   name="age"
                   className="form-control"
                   min="0"
-                  onChange={(e)=>setAge(e.target.value)}
-                  // required
+                  onChange={(e) => setAge(e.target.value)}
+                // required
                 />
               </div>
             </div>
@@ -96,12 +96,12 @@ function DocLoginForm(props) {
                   {" "}
                   Address{" "}
                 </label>
-                <input 
-                onChange={(e)=>setAddress(e.target.value)}
-                // required
-                type="text"
-                name="address"
-                className="form-control"
+                <input
+                  onChange={(e) => setAddress(e.target.value)}
+                  // required
+                  type="text"
+                  name="address"
+                  className="form-control"
                 />
               </div>
             </div>
@@ -113,18 +113,13 @@ function DocLoginForm(props) {
                   {" "}
                   CNIC #{" "}
                 </label>
-                <input 
-                onChange={(e)=>setCnic(e.target.value)}
-                // required
-                type="text"
-                name="cnic"
-                className="form-control"
-                // pattern='[0-9]{5}-[0-9]{7}-[0-9]{1}'
-                title=" CNIC should only contain digits"
-                
+                <input
+                  onChange={(e) => setCnic(e.target.value)}
+                  required
+                  type="text"
+                  name="cnic"
+                  className="form-control"
                 />
-                <small style={{float:'left',marginBottom:'1px'}}>Format: 12345-1234567-1</small><br></br>
-
               </div>
             </div>
           </div>
@@ -135,7 +130,7 @@ function DocLoginForm(props) {
                   {" "}
                   Gender{" "}
                 </label>
-                <select onChange={(e)=>setGender(e.target.value)} required className="custom-select">
+                <select onChange={(e) => setGender(e.target.value)} required className="custom-select">
                   <option defaultValue="Choose...">Choose...</option>
                   <option value="male">Male</option>
                   <option value="female">Female</option>
@@ -154,15 +149,15 @@ function DocLoginForm(props) {
                   type="text"
                   name="qulalification"
                   className="form-control"
-                  onChange={(e)=>setQualification(e.target.value)}
-                  // required
+                  onChange={(e) => setQualification(e.target.value)}
+                  required
                 />
               </div>
             </div>
           </div>
-         <div className='mb-2'> <button type='submit'  className='btn btn-primary mb-2'> Sign up </button> </div>
-         </form>
-        </div>
+          <div className='mb-2'> <button type='submit' className='btn btn-primary mb-2'> Sign up </button> </div>
+        </form>
+      </div>
     </div>
   );
 }

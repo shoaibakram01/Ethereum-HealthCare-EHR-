@@ -50,7 +50,7 @@ function PatientDashboard(props) {
       // alert(`there is an error :${e}`)
     }
 
-   
+
   };
   const getFile = async (event) => {
     event.preventDefault();
@@ -68,7 +68,7 @@ function PatientDashboard(props) {
   };
   const uploadFile = async (event) => {
     event.preventDefault();
-   
+
     ipfs.files.add(buffer, (err, res) => {
       if (err) {
         console.error("error-------------", err);
@@ -78,7 +78,7 @@ function PatientDashboard(props) {
         updateFileHash(filename, filetype, res[0].hash);
       }
     });
-   
+
   };
 
   const updateFileHash = async (name, type, ipfshash) => {
@@ -118,10 +118,11 @@ function PatientDashboard(props) {
     }
   }
 
-  const grantAccess = async () => {
+  const grantAccess = async (event) => {
+    event.preventDefault()
     if (account) {
       setGrantAccess01(true)
-      let res = await Contdata01.Contract["OPT"].methods.grantAccessToDoctor(account)
+      let res = await Contdata01.contract["OPT"].methods.grantAccessToDoctor(account)
         .send({ "from": patAddress });
 
       if (res) {
@@ -157,7 +158,7 @@ function PatientDashboard(props) {
           <form onSubmit={grantAccess}>
             <h5>Grant Access</h5>
             <input value={account} required className="form-control" placeholder="Enter Doctor Address" onChange={(e) => setAccount(e.target.value)} />
-            <button className="btn btn-primary mt-2" type="submit"> {setGrantAccess01? "Grant Access" : <i className="fa fa-spinner fa-spin" /> } </button>
+            <button className="btn btn-primary mt-2" type="submit" disabled={grantAccess01 === false ? false : true}>  {grantAccess01 === false ? "Grant Access" : <i className="fa fa-spinner fa-spin" />} </button>
           </form>
         </div>
         <div className="col">
@@ -165,12 +166,12 @@ function PatientDashboard(props) {
           <form onSubmit={uploadFile}>
             {/* <Input className='emailId' style={{width:"100%"}} value={this.state.secret} onChange={this.onTextChange.bind(this, 'secret')} size="small" placeholder="One Time Secret"/> */}
             <input type="file" onChange={getFile}></input>
-            <button className="btn btn-primary" type="submit">{upload==false? "Submit" :<i className="fa fa-spinner fa-spin" /> } </button>
+            <button className="btn btn-primary" type="submit" disabled = {upload == false ? false : true} >{upload == false ? "Upload File" : <i className="fa fa-spinner fa-spin" />} </button>
           </form>
         </div>
       </div>
       <div className="row" style={{ display: 'flex', justifyContent: 'space-even', padding: '5px' }}>
-        {files?(files.map((fhash, i) => (
+        {files ? (files.map((fhash, i) => (
           <div className="col-4" key={i} style={{ padding: '5px' }}>
             <FileCard
               hash={fhash}
@@ -180,7 +181,7 @@ function PatientDashboard(props) {
               image={`https://ipfs.io/ipfs/${files[i][2]}`}
             />
           </div>
-        ))):<i className="fa fa-spinner fa-spin fa-4x" />}
+        ))) : <i className="fa fa-spinner fa-spin fa-4x" />}
       </div>
     </div>
   );

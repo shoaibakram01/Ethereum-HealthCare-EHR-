@@ -16,6 +16,7 @@ import PatientLogin from "./patientLogin";
 import DoctorDashoard from "./DoctorDashoard";
 import PatientDashboard from "./PatientDashboard";
 import ContractState from "./context/contractState";
+import ProtectedRoute from "./ProtectedRoute";
 function NavbarComp() {
   //   let isLogged = this.props.isLogged?false:true;
   // console.log('is logged',isLogged);
@@ -53,6 +54,11 @@ function NavbarComp() {
   //     console.error(error);
   //   }
   // } 
+
+  const handleLogin =(event)=>{
+    event.preventDefault();
+    console.log("Hanldle Login")
+  }
   return (<div>
     <>
       <ContractState>
@@ -74,7 +80,9 @@ function NavbarComp() {
                 <li className="nav-item">
                   <Link className="nav-link" to="/patient">Patient</Link>
                 </li>
-               
+                <li className="nav-item">
+                  <button className="btn btn-primary" onClick={handleLogin}> Login </button>
+                </li>
               </ul>
             </div>
           </div>
@@ -86,10 +94,9 @@ function NavbarComp() {
           </Route>
           <Route path="/patient" element={<PatientLogin/>}>
           </Route>
-          <Route path="/DoctorDashoard" element={ <DoctorDashoard />}>
+          <Route path="/DoctorDashoard" element={ <ProtectedRoute Component={DoctorDashoard} />}>
           </Route>
-          <Route path="/PatientDashboard" element={<PatientDashboard />}>
-            
+          <Route path="/PatientDashboard" element={<ProtectedRoute Component={PatientDashboard} />}>
           </Route>
         </Routes>
       </ContractState>

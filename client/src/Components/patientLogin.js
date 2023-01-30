@@ -19,6 +19,7 @@ function PatientLogin(props) {
      , [account01]);
      const LoginWithWallet = async(event ) => {
          event.preventDefault();
+        //  localStorage.setItem("healthCare", 'token' )
          console.log("patient Context :",Contcontext.account[0] )
     var result = null;
     try {
@@ -26,6 +27,7 @@ function PatientLogin(props) {
         .getPatientInfo()
         .call({ from: Contcontext.account[0] });
         navigate(`/PatientDashboard?id=${Contcontext.account}`);
+        localStorage.setItem("healthCare",'token')
         console.log("result :", result)
       // history.push("/DoctorDashoard");
     } catch (e) {
