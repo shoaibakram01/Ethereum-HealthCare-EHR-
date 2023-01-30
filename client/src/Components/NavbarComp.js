@@ -8,7 +8,7 @@ import {
   Switch,
   Route,
   Link,
-  Routes
+  Routes, useNavigate
 } from "react-router-dom";
 import Home from './Home';
 import DoctorLogin from "./doctorLogin";
@@ -18,6 +18,7 @@ import PatientDashboard from "./PatientDashboard";
 import ContractState from "./context/contractState";
 import ProtectedRoute from "./ProtectedRoute";
 function NavbarComp() {
+  const navigate = useNavigate();
   //   let isLogged = this.props.isLogged?false:true;
   // console.log('is logged',isLogged);
   // const [web3, setweb3] = useState();
@@ -57,7 +58,10 @@ function NavbarComp() {
 
   const handleLogin =(event)=>{
     event.preventDefault();
-    console.log("Hanldle Login")
+    // localStorage.setItem( '',)
+    localStorage.setItem("healthCare", ' ')
+    navigate('/')
+    // console.log("Hanldle Login")
   }
   return (<div>
     <>
