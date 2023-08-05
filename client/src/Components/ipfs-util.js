@@ -1,6 +1,6 @@
 // const ipfsClient = require('ipfs-http-client');
-const projectId = '2HEePHqr0yoyNTidzIls3jZiSrA';
-const projectSecret = '06bc27e967d2c8f91e4a5cfcaff7560f';
+const projectId = 'PROJECT_ID';
+const projectSecret = 'PROJECT_SECRET';
 const auth =
     'Basic ' + Buffer.from(projectId + ':' + projectSecret).toString('base64');
 
@@ -17,8 +17,8 @@ const auth =
 
 // import {create} from "ipfs-http-client"; 
 // const ipfsClient = require("ipfs-http-client");
-// const projectId = "2HEePHqr0yoyNTidzIls3jZiSrA";
-// const projectSecret = "06bc27e967d2c8f91e4a5cfcaff7560f";
+// const projectId = "PROJECT_ID";
+// const projectSecret = "PROJECT_SECRET";
 // const authorization = "Basic " + btoa(projectId + ":" + projectSecret);
 // // const auth =
 // //     "Basic " + Buffer.from(projectId + ":" + projectSecret).toString("base64");
